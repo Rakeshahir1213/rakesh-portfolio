@@ -1,0 +1,233 @@
+/* Color Palette: A modern dark theme */
+:root {
+    --primary-color: #4f46e5; /* Not used as the main accent color, but kept for consistency */
+    --secondary-color: #3b82f6;
+    --text-color: #f3f4f6; /* Light gray for readability on dark background */
+    --light-bg-color: #1f2937; /* Dark gray for a sleek look */
+    --card-bg-color: #111827; /* Darker card background */
+    --card-border-color: #374151; /* Subtle border color */
+    --accent-color: #2dd4bf; /* A vibrant teal for highlights and icons */
+}
+
+/* Custom font and smooth scroll */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--light-bg-color);
+    color: var(--text-color);
+    scroll-behavior: smooth;
+}
+
+/* Base styles for sections and cards */
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 2.5rem;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--accent-color);
+    border-radius: 2px;
+    animation: expandUnderline 1s ease-in-out;
+}
+
+@keyframes expandUnderline {
+    from { width: 0; }
+    to { width: 80px; }
+}
+
+.skill-card, .hobby-card {
+    background-color: var(--card-bg-color);
+    padding: 2rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    text-align: center;
+    border: 1px solid var(--card-border-color);
+}
+
+.skill-card:hover, .hobby-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+}
+
+.skill-card i, .hobby-card i {
+    color: var(--accent-color);
+    transition: color 0.3s ease-in-out;
+}
+
+/* Primary Button Style */
+.btn-primary {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    background-color: var(--accent-color);
+    color: var(--light-bg-color);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+    background-color: #21a89c; /* A slightly darker teal */
+    transform: scale(1.05);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Navigation Links */
+.nav-link {
+    font-weight: 500;
+    color: var(--text-color);
+    position: relative;
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+    color: var(--accent-color);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Animations */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.animate-fade-in-up {
+    animation-name: fadeInUp;
+    animation-fill-mode: both;
+    animation-duration: 0.8s;
+    animation-timing-function: ease-out;
+    opacity: 0;
+}
+
+.animate-fade-in-up.delay-100 { animation-delay: 0.1s; }
+.animate-fade-in-up.delay-200 { animation-delay: 0.2s; }
+.animate-fade-in-up.delay-300 { animation-delay: 0.3s; }
+.animate-fade-in-up.delay-400 { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Experience Timeline */
+.timeline-container {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.timeline-container::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background-color: var(--card-border-color);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1px;
+}
+
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    right: -8px;
+    background-color: var(--accent-color);
+    border: 2px solid var(--accent-color);
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-left {
+    left: 0;
+}
+
+.timeline-right {
+    left: 50%;
+}
+
+.timeline-right::after {
+    left: -8px;
+}
+
+.timeline-content {
+    padding: 20px 30px;
+    background-color: var(--card-bg-color);
+    position: relative;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--card-border-color);
+}
+
+/* Media queries for responsive timeline */
+@media screen and (max-width: 768px) {
+    .timeline-container::after {
+        left: 31px;
+    }
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+    .timeline-item::after {
+        left: 23px;
+    }
+    .timeline-right {
+        left: 0%;
+    }
+}
+
+/* Footer links styling */
+.footer-link {
+    @apply text-gray-400 hover:text-white transition-colors duration-200;
+}
